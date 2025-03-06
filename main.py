@@ -7,10 +7,12 @@ ACCOUNT_SID = ""
 AUTH_TOKEN = ""
 FROM_NUMBER = ""
 TO_NUMBER = ""
+WHATSAPP_PHONE_NUMBER = ""
 
 parameters = {
     "lat": 18.520430,
     "lon": 73.856743,
+    "cnt": 4,
     "appid": API_KEY,
     "exclude": "current,minutely,daily"
 }
@@ -35,4 +37,10 @@ if will_rain:
             from_=FROM_NUMBER,
             to=TO_NUMBER
         )
+    whatsapp_message = client.messages.create(
+        from_=f"whatsapp:{WHATSAPP_PHONE_NUMBERR}",
+        body="It's going to rain today. Remember to bring an umbrella ️☂️",
+        to=f"whatsapp:{TO_NUMBER}"
+    )
     print(message.status)
+    print(whatsapp_message.status)
